@@ -1,0 +1,2806 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "PenNav API",
+    "contact": {
+      "name": "PenguinIN",
+      "email": "info@penguinin.com"
+    },
+    "termsOfService": "http://penguinin.com/",
+    "version": "0.2"
+  },
+  "servers": [
+    {
+      "description": "SwaggerHub API Auto Mocking",
+      "url": "https://virtserver.swaggerhub.com/Penguin-IN/PenNav/0.2"
+    }
+  ],
+  "paths": {
+    "/DataAPI.svc/GetEdges": {
+      "post": {
+        "tags": [
+          "Routes (Edges)"
+        ],
+        "description": "Retrieves a list of all modified edges with their details after the requested date for the requested venue. Edges may be used to calculate paths/ routes between several PoIs. <br>Note: if you need all edges set the last update date = '1/1/2001 01:00:00 AM'",
+        "summary": "GetEdges",
+        "operationId": "GetEdges",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetEdgesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetEdgesResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/EdgeSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetFloorsEdges": {
+      "post": {
+        "tags": [
+          "Routes (Edges)"
+        ],
+        "description": "Retrieves a list of all requested floors modified edges with their details after the requested date.  Edges may be used to calculate paths/ routes between PoIs. <br>Note: if you need all edges for these floors set the last update date = '1/1/2001 01:00:00 AM'",
+        "summary": "GetFloorsEdges",
+        "operationId": "GetFloorsEdges",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetFloorsEdgesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetEdgesResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/EdgeSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetVersion": {
+      "post": {
+        "tags": [
+          "Data API"
+        ],
+        "summary": "GetVersion",
+        "description": "Get Current API Version",
+        "operationId": "GetVersion",
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetVersionResult": {
+                      "type": "string",
+                      "description": "Current API Version",
+                      "example": "2.1.9"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetUUIDs": {
+      "post": {
+        "tags": [
+          "Data API"
+        ],
+        "summary": "Get UUIDs",
+        "description": "Get UUIDs",
+        "operationId": "GetUUIDs",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUUIDSRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetEdgesResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/UuidResultSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetMaps": {
+      "post": {
+        "tags": [
+          "Floor"
+        ],
+        "summary": "GetMaps",
+        "description": "Retrieve a list of modified floors with all details for a specific venue. This list shows the status for each modification after the requested date. <br> Note: if you need all venue floor, set the last update date = '1/1/2001 01:00:00 AM'",
+        "operationId": "GetMaps",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMapsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetMapsResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/MapSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetSubCategories": {
+      "post": {
+        "tags": [
+          "PoI"
+        ],
+        "summary": "GetSubCategories",
+        "description": "Retrieves a list of all modified PoIs Sub Categories with their details after the requested date. <br> Note: if you need all venue floor, set the last update date = '1/1/2001 01:00:00 AM'",
+        "operationId": "GetSubCategories",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetSubCategoriesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetSubCategoriesResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PoiSubCategorySchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/setFavoritePoI": {
+      "post": {
+        "tags": [
+          "PoI"
+        ],
+        "summary": "setFavoritePoI",
+        "description": "Add or remove requested PoI from user’s Favorite PoI list.",
+        "operationId": "setFavoritePoI",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/setFavoritePoIRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "setFavoritePoIResult": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetVenues": {
+      "post": {
+        "tags": [
+          "Venue"
+        ],
+        "summary": "GetVenues",
+        "description": "Retrieves a list of all venues with all main details. This list shows the status for each modification after the requested date. <br> Note: if you need all venues, set the last update date = '1/1/2001 01:00:00 AM'",
+        "operationId": "GetVenues",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVenuesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetVenuesResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/VenueSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetPoIsSchedule": {
+      "post": {
+        "tags": [
+          "PoI"
+        ],
+        "summary": "GetPoIsSchedule",
+        "description": "Retrieves a list of the requested venue’s PoIs opening time schedule in details.",
+        "operationId": "GetPoIsSchedule",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetPoIsScheduleRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetPoIsScheduleResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PoiScheduleSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetAvaliableADsIDs": {
+      "post": {
+        "tags": [
+          "Ads"
+        ],
+        "summary": "GetAvaliableADsIDs",
+        "description": "Retrieves IDs of available ads at the time of this request. <br>Note: available means that the Ad will not be shown unless the current time is within the Ad’s schedule",
+        "operationId": "GetAvaliableADsIDs",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetAvaliableADsIDsResult": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      },
+                      "example": [
+                        1,
+                        3,
+                        7
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/getFavoritePoI": {
+      "post": {
+        "tags": [
+          "PoI"
+        ],
+        "summary": "getFavoritePoI",
+        "description": "Retrieves a user’s Favorite PoI list.",
+        "operationId": "getFavoritePoI",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getFavoritePoIRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "getFavoritePoIResult": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      },
+                      "example": [
+                        6,
+                        9,
+                        5
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetCategories": {
+      "post": {
+        "tags": [
+          "PoI"
+        ],
+        "summary": "GetCategories",
+        "description": "Retrieves a list of all modified PoIs Categories with their details after the requested date. <br>Note: if you need all categories set the last update date = '1/1/2001 01:00:00 AM'",
+        "operationId": "GetCategories",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCategoriesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetCategoriesResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PoiCategorySchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/getPoIById": {
+      "post": {
+        "tags": [
+          "PoI"
+        ],
+        "summary": "getPoIById",
+        "description": "Retrieves all details of the requested PoI.",
+        "operationId": "getPoIById",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getPoIByIdRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "getPoIByIdResult": {
+                      "$ref": "#/components/schemas/PoiSchema"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetPoIsImages": {
+      "post": {
+        "tags": [
+          "PoI"
+        ],
+        "summary": "GetPoIsImages",
+        "description": "Retrieves images for requested PoIs. This method is leveraged in order to optimize the loading size and time of the data. <br>Note:  Only Image and ID fields of POISchema will have data, the rest of fields is going to be null or zero.",
+        "operationId": "GetPoIsImages",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetPoIsImagesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetPoIsImagesResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PoiSchema"
+                      },
+                      "example": [
+                        {
+                          "CatIDs": null,
+                          "Description": null,
+                          "Description_SecondLang": null,
+                          "Email": null,
+                          "FloorID": null,
+                          "ID": "1",
+                          "Image": "/w+2gUtXLTuQ+QAAAABJRU5ErkJggg==",
+                          "Landmark": 0,
+                          "Name": null,
+                          "Name_SecondLang": null,
+                          "Phone": null,
+                          "SubcatIDs": null,
+                          "Type": null,
+                          "UpdateStatus": null,
+                          "WithSchedule": 0,
+                          "ZoneID": null,
+                          "ZonePoints": null
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetPoIByFloor": {
+      "post": {
+        "tags": [
+          "PoI"
+        ],
+        "summary": "GetPoIsByFloor",
+        "description": "Retrieves a list of the requested modified floor’s PoIs with their main details after the requested date. <br>Note: if you need all floor’s PoIs set the last update date = '1/1/2001 01:00:00 AM'",
+        "operationId": "GetPoIsByFloor",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetPoIsByFloorRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetPoIByFloorResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PoiSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/setFrequentPoI": {
+      "post": {
+        "tags": [
+          "PoI"
+        ],
+        "summary": "setFrequentPoI",
+        "description": "Add a specific PoI to user’s frequent PoIs list.",
+        "operationId": "setFrequentPoI",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/setFrequentPoIRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "setFrequentPoIResult": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetVenueFloors": {
+      "post": {
+        "tags": [
+          "Floor"
+        ],
+        "description": "Retrieve a list of floors with all details for a specific venue. <br>Note: if you need all venue floor, set the last update date = '1/1/2001 01:00:00 AM'",
+        "summary": "GetVenueFloors",
+        "operationId": "GetVenueFloors",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVenueFloorsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetVenueFloorsResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/MapSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetADsImages": {
+      "post": {
+        "tags": [
+          "Ads"
+        ],
+        "summary": "GetADsImages",
+        "description": "Retrieves images for requested ads. This method is leveraged in order to optimize the loading size and time of the data. <br>Note:  Only Image, Icon and ID fields of POISchema will have data, the rest of fields is going to be null, zero or false.",
+        "operationId": "GetADsImages",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetADsImagesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetAdsImagesResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AdSchema"
+                      },
+                      "example": [
+                        {
+                          "Active": false,
+                          "AdID": 1,
+                          "AvaliableCoupon": false,
+                          "Description": null,
+                          "FloorID": 0,
+                          "Name": null,
+                          "PoIID": 0,
+                          "PoIName": null,
+                          "TermsAndConditions": null,
+                          "VenueID": 0,
+                          "icon": "/9j/4AAQSkZJRgABAgAAAQABAAD/4QDmRX",
+                          "image": "/9j/4AAQSkZJRgABAgAAAQABAAD/4QDmRX",
+                          "isDeleted": false,
+                          "link": null
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetVenueByID": {
+      "post": {
+        "tags": [
+          "Venue"
+        ],
+        "description": "Retrieves all details of the requested venue for a specific ID in a list of length 1.",
+        "summary": "GetVenueByID",
+        "operationId": "GetVenueByID",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVenueByIDRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetVenueByIDResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/VenueSchema"
+                      },
+                      "minItems": 0,
+                      "maxItems": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/getAdsOnEdge": {
+      "post": {
+        "tags": [
+          "Ads"
+        ],
+        "summary": "getAdsOnEdge",
+        "description": "Retrieves a list of all available ads assigned to the requested edge.",
+        "operationId": "getAdsOnEdge",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getAdsOnEdgeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "getAdsOnEdgeResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/EdgeAdSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/getAdsOnFloor": {
+      "post": {
+        "tags": [
+          "Ads"
+        ],
+        "summary": "getAdsOnFloor",
+        "description": "Retrieves a list of all available ads assigned to the requested floor.",
+        "operationId": "getAdsOnFloor",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getAdsOnFloorRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "getAdsOnEdgeResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/EdgeAdSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetAds": {
+      "post": {
+        "tags": [
+          "Ads"
+        ],
+        "summary": "GetAds",
+        "description": "Retrieves a list of the requested modified venue’s ads with their main details after the requested date. <br>Note: if you need all Ads set the last update date = '1/1/2001 01:00:00 AM'",
+        "operationId": "GetAds",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAdsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetAdsResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AdSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/getAdById": {
+      "post": {
+        "tags": [
+          "Ads"
+        ],
+        "summary": "getAdById",
+        "description": "Retrieves all details of the requested Ad.",
+        "operationId": "getAdById",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getAdByIdRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "getAdByIdResult": {
+                      "$ref": "#/components/schemas/AdSchema"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetPoIs": {
+      "post": {
+        "tags": [
+          "PoI"
+        ],
+        "summary": "GetPoIs",
+        "description": "Retrieves a list of the requested modified venue’s PoIs with their main details after the requested date. <br>Note: if you need all venue’s PoIs, set the last update date = '1/1/2001 01:00:00 AM'.",
+        "operationId": "GetPoIs",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetPoIsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetPoIsResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PoiSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/GetFloorsIcons": {
+      "post": {
+        "tags": [
+          "Floor"
+        ],
+        "summary": "GetFloorsIcons",
+        "description": "Retrieves a list of floors icons that are predefined and saved in the database (DB). <br> Note: if you need all floor’s icon set the last update date = '1/1/2001 01:00:00 AM'",
+        "operationId": "GetFloorsIcons",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetFloorsIconsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetFloorsIconsResult": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FloorIconSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/DataAPI.svc/getFrequentPoI": {
+      "post": {
+        "tags": [
+          "PoI"
+        ],
+        "summary": "getFrequentPoI",
+        "description": "Retrieves user’s Frequent PoIs list.",
+        "operationId": "getFrequentPoI",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getFrequentPoIRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "getFrequentPoIResult": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      },
+                      "example": [
+                        6,
+                        9,
+                        5
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/PathAPI.svc/getPathToPoI": {
+      "post": {
+        "tags": [
+          "Path"
+        ],
+        "summary": "getPathToPoI",
+        "description": "Retrieves the shortest path between specific location coordinates and a PoI",
+        "operationId": "getPathToPoI",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getPathToPoIRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "getPathToPoIResult": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "EdgesCount -  Path Edges count  - String (only Digits)<br> List(PathID) -  List of Path Edges IDs (size= EdgesCount)  - List<Strings> (only Digits)<br> List(Direction) -  List of Directions instructions  - List<String> (as DirectionID)<br> PreviewParameters  - Navigation Preview Parameters  - String (Last item of the list)<br> <style type=\"text/css\"> .tg  {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg .tg-qh06{background-color:#ED7D31;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} </style> <table class=\"tg\"> <thead>\n  <tr>\n    <th class=\"tg-qh06\"><span style=\"background-color:#ED7D31\">&nbsp;&nbsp;&nbsp;</span><br><span style=\"color:white\">DirectionID</span><span style=\"background-color:#ED7D31\">&nbsp;&nbsp;&nbsp;</span></th>\n    <th class=\"tg-qh06\"><span style=\"background-color:#ED7D31\">&nbsp;&nbsp;&nbsp;</span><br><span style=\"color:white\">Meaning</span><span style=\"background-color:#ED7D31\">&nbsp;&nbsp;&nbsp;</span></th>\n  </tr>\n</thead> <tbody>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>0&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Straight&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>1&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Slight Right&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>2&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Slight Left&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>3&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Right&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>4&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Left&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>5&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Sharp Right&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>6&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Sharp Left&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>7&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Backward&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>8&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Up Escalator&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>9&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Down Escalator&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>10&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Elevator&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n</tbody> </table>\n",
+                      "example": [
+                        "9",
+                        "29",
+                        "27",
+                        "25",
+                        "20",
+                        "19",
+                        "10",
+                        "46",
+                        "41",
+                        "42",
+                        "0_0_1",
+                        "0_0_1",
+                        "3_15_1",
+                        "0_0_1",
+                        "0_0_1",
+                        "3_17_1",
+                        "4_7_1",
+                        "0_0_1",
+                        "0_0_1",
+                        "F_1"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/PathAPI.svc/GetShortestPath": {
+      "post": {
+        "tags": [
+          "Path"
+        ],
+        "summary": "GetShortestPath",
+        "description": "Retrieves the shortest path between two specific location coordinates. Can be used to:\n  -  Navigate from user’s current position to a certain PoI\n  -  Navigate from user’s navigation error position to certain point on the correct path (Destination Point)\n",
+        "operationId": "GetShortestPath",
+        "parameters": [
+
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetShortestPathRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "GetShortestPathResult": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "EdgesCount -  Path Edges count  - String (only Digits)<br> List(PathID) -  List of Path Edges IDs (size= EdgesCount)  - List<Strings> (only Digits)<br> List(Direction) -  List of Directions instructions  - List<String> (as DirectionID)<br> PreviewParameters  - Navigation Preview Parameters  - String (Last item of the list)<br> <style type=\"text/css\"> .tg  {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg .tg-qh06{background-color:#ED7D31;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} </style> <table class=\"tg\"> <thead>\n  <tr>\n    <th class=\"tg-qh06\"><span style=\"background-color:#ED7D31\">&nbsp;&nbsp;&nbsp;</span><br><span style=\"color:white\">DirectionID</span><span style=\"background-color:#ED7D31\">&nbsp;&nbsp;&nbsp;</span></th>\n    <th class=\"tg-qh06\"><span style=\"background-color:#ED7D31\">&nbsp;&nbsp;&nbsp;</span><br><span style=\"color:white\">Meaning</span><span style=\"background-color:#ED7D31\">&nbsp;&nbsp;&nbsp;</span></th>\n  </tr>\n</thead> <tbody>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>0&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Straight&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>1&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Slight Right&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>2&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Slight Left&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>3&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Right&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>4&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Left&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>5&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Sharp Right&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>6&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Sharp Left&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>7&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Backward&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>8&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Up Escalator&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>9&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Down Escalator&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n  <tr>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>10&nbsp;&nbsp;&nbsp;</td>\n    <td class=\"tg-0lax\">&nbsp;&nbsp;&nbsp;<br>Elevator&nbsp;&nbsp;&nbsp;</td>\n  </tr>\n</tbody> </table>\n",
+                      "example": [
+                        "5",
+                        "29",
+                        "27",
+                        "25",
+                        "39",
+                        "48",
+                        "0_0_1",
+                        "0_0_1",
+                        "3_15_1",
+                        "4_0_1",
+                        "0_0_1",
+                        "F_1"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GetFloorsEdgesRequest": {
+        "title": "GetFloorsEdgesRequest",
+        "required": [
+          "FloorIDs",
+          "LastUpdateDate"
+        ],
+        "type": "object",
+        "properties": {
+          "FloorIDs": {
+            "description": "Requested Floors IDs. IDs separated by ‘_’",
+            "type": "string"
+          },
+          "LastUpdateDate": {
+            "description": "Last Update Request Date",
+            "type": "string"
+          }
+        },
+        "example": {
+          "FloorIDs": "1",
+          "LastUpdateDate": "2010-06-26"
+        }
+      },
+      "GetEdgesRequest": {
+        "title": "GetEdgesRequest",
+        "required": [
+          "LastUpdateDate",
+          "VenueID"
+        ],
+        "type": "object",
+        "properties": {
+          "LastUpdateDate": {
+            "type": "string",
+            "description": "Last Update Request Date"
+          },
+          "VenueID": {
+            "type": "string",
+            "description": "Requested Venue ID"
+          }
+        },
+        "example": {
+          "LastUpdateDate": "2016-06-26",
+          "VenueID": "1"
+        }
+      },
+      "GetMapsRequest": {
+        "title": "GetMapsRequest",
+        "required": [
+          "LastUpdateDate",
+          "VenueID"
+        ],
+        "type": "object",
+        "properties": {
+          "LastUpdateDate": {
+            "type": "string",
+            "description": "Last Update Request Date "
+          },
+          "VenueID": {
+            "type": "string",
+            "description": "Requested Venue ID"
+          }
+        },
+        "example": {
+          "LastUpdateDate": "2016-06-26",
+          "VenueID": "1"
+        }
+      },
+      "GetSubCategoriesRequest": {
+        "title": "GetSubCategoriesRequest",
+        "required": [
+          "LastUpdateDate"
+        ],
+        "type": "object",
+        "properties": {
+          "LastUpdateDate": {
+            "type": "string",
+            "description": "Last Update Request Date"
+          }
+        },
+        "example": {
+          "LastUpdateDate": "2015-06-26"
+        }
+      },
+      "setFavoritePoIRequest": {
+        "title": "setFavoritePoIRequest",
+        "required": [
+          "operation",
+          "userId",
+          "PoIID"
+        ],
+        "type": "object",
+        "properties": {
+          "operation": {
+            "type": "string",
+            "description": "Add or Remove Operation (\"0\" to add, \"1\" to remove)"
+          },
+          "userId": {
+            "type": "string",
+            "description": "Front End UserID"
+          },
+          "PoIID": {
+            "type": "string",
+            "description": "Requested PoI ID"
+          }
+        },
+        "example": {
+          "operation": "1",
+          "userId": "Majd",
+          "PoIID": "5"
+        }
+      },
+      "GetVenuesRequest": {
+        "title": "GetVenuesRequest",
+        "required": [
+          "LastUpdateDate"
+        ],
+        "type": "object",
+        "properties": {
+          "LastUpdateDate": {
+            "description": "Last Update Request Date",
+            "type": "string"
+          }
+        },
+        "example": {
+          "LastUpdateDate": "1900-08-14"
+        }
+      },
+      "GetUUIDSRequest": {
+        "title": "GetUUIDSRequest",
+        "required": [
+          "LastUpdateDate"
+        ],
+        "type": "object",
+        "properties": {
+          "LastUpdateDate": {
+            "description": "Last Update Request Date",
+            "type": "string"
+          }
+        },
+        "example": {
+          "LastUpdateDate": "1900-08-14"
+        }
+      },
+      "GetPoIsScheduleRequest": {
+        "title": "GetPoIsScheduleRequest",
+        "required": [
+          "LastUpdateDate",
+          "VenueID"
+        ],
+        "type": "object",
+        "properties": {
+          "LastUpdateDate": {
+            "type": "string",
+            "description": "Last Update Request Date"
+          },
+          "VenueID": {
+            "type": "string",
+            "description": "Requested Venue ID"
+          }
+        },
+        "example": {
+          "LastUpdateDate": "2016-10-15",
+          "VenueID": "1"
+        }
+      },
+      "getFavoritePoIRequest": {
+        "title": "getFavoritePoIRequest",
+        "required": [
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "Front End UserID"
+          }
+        },
+        "example": {
+          "userId": "Majd"
+        }
+      },
+      "GetCategoriesRequest": {
+        "title": "GetCategoriesRequest",
+        "required": [
+          "LastUpdateDate"
+        ],
+        "type": "object",
+        "properties": {
+          "LastUpdateDate": {
+            "type": "string",
+            "description": "Last Update Request Date"
+          }
+        },
+        "example": {
+          "LastUpdateDate": "2017-06-01"
+        }
+      },
+      "getPoIByIdRequest": {
+        "title": "getPoIByIdRequest",
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Requested PoI ID"
+          }
+        },
+        "example": {
+          "id": "1"
+        }
+      },
+      "GetPoIsImagesRequest": {
+        "title": "GetPoIsImagesRequest",
+        "required": [
+          "IDs"
+        ],
+        "type": "object",
+        "properties": {
+          "IDs": {
+            "type": "string",
+            "description": "PoIs IDs separated by “_”"
+          }
+        },
+        "example": {
+          "IDs": "1"
+        }
+      },
+      "GetPoIsByFloorRequest": {
+        "title": "GetPoIsByFloorRequest",
+        "required": [
+          "LastUpdateDate",
+          "FloorID"
+        ],
+        "type": "object",
+        "properties": {
+          "LastUpdateDate": {
+            "type": "string",
+            "description": "Last Update Request Date"
+          },
+          "FloorID": {
+            "type": "string",
+            "description": "Requested Floor ID"
+          }
+        },
+        "example": {
+          "LastUpdateDate": "2013-06-15",
+          "FloorID": "1"
+        }
+      },
+      "setFrequentPoIRequest": {
+        "title": "setFrequentPoIRequest",
+        "required": [
+          "userId",
+          "PoIId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "Front End UserID"
+          },
+          "PoIId": {
+            "type": "string",
+            "description": "Requested PoI ID"
+          }
+        },
+        "example": {
+          "userId": "Majd",
+          "PoIId": "5"
+        }
+      },
+      "GetVenueFloorsRequest": {
+        "title": "GetVenueFloorsRequest",
+        "required": [
+          "ID",
+          "LastUpdateDate"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "description": "Requested Venue ID"
+          },
+          "LastUpdateDate": {
+            "type": "string",
+            "description": "Last Update Request Date "
+          }
+        },
+        "example": {
+          "ID": "1",
+          "LastUpdateDate": "2015-08-14"
+        }
+      },
+      "GetADsImagesRequest": {
+        "title": "GetADsImagesRequest",
+        "required": [
+          "IDs"
+        ],
+        "type": "object",
+        "properties": {
+          "IDs": {
+            "type": "string",
+            "description": "Ads IDs separated by “_”"
+          }
+        },
+        "example": {
+          "IDs": "1"
+        }
+      },
+      "GetVenueByIDRequest": {
+        "title": "GetVenueByIDRequest",
+        "required": [
+          "ID"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "description": "Requested Venue ID"
+          }
+        },
+        "example": {
+          "ID": "1"
+        }
+      },
+      "getAdsOnEdgeRequest": {
+        "title": "getAdsOnEdgeRequest",
+        "required": [
+          "edgeId"
+        ],
+        "type": "object",
+        "properties": {
+          "edgeId": {
+            "type": "string",
+            "description": "Requested Edge ID"
+          }
+        },
+        "example": {
+          "edgeId": "24"
+        }
+      },
+      "getAdsOnFloorRequest": {
+        "title": "getAdsOnFloorRequest",
+        "required": [
+          "floorId"
+        ],
+        "type": "object",
+        "properties": {
+          "floorId": {
+            "type": "string",
+            "description": "Requested Floor ID"
+          }
+        },
+        "example": {
+          "floorId": "2"
+        }
+      },
+      "GetAdsRequest": {
+        "title": "GetAdsRequest",
+        "required": [
+          "LastUpdateDate",
+          "VenueID"
+        ],
+        "type": "object",
+        "properties": {
+          "LastUpdateDate": {
+            "type": "string",
+            "description": "Last Update Request Date"
+          },
+          "VenueID": {
+            "type": "string",
+            "description": "Requested Venue ID"
+          }
+        },
+        "example": {
+          "LastUpdateDate": "2017-10-05",
+          "VenueID": "1"
+        }
+      },
+      "getAdByIdRequest": {
+        "title": "getAdByIdRequest",
+        "required": [
+          "userId",
+          "adId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "Front End User ID"
+          },
+          "adId": {
+            "type": "string",
+            "description": "Requested ad ID"
+          }
+        },
+        "example": {
+          "userId": "Majd",
+          "adId": "3"
+        }
+      },
+      "GetPoIsRequest": {
+        "title": "GetPoIsRequest",
+        "required": [
+          "LastUpdateDate",
+          "VenueID"
+        ],
+        "type": "object",
+        "properties": {
+          "LastUpdateDate": {
+            "type": "string",
+            "description": "Last Update Request Date"
+          },
+          "VenueID": {
+            "type": "string",
+            "description": "Requested Venue ID"
+          }
+        },
+        "example": {
+          "LastUpdateDate": "2017-06-15",
+          "VenueID": "1"
+        }
+      },
+      "GetFloorsIconsRequest": {
+        "title": "GetFloorsIconsRequest",
+        "required": [
+          "LastUpdateDate"
+        ],
+        "type": "object",
+        "properties": {
+          "LastUpdateDate": {
+            "type": "string",
+            "description": "Last Update Request Date"
+          }
+        },
+        "example": {
+          "LastUpdateDate": "2016-06-26"
+        }
+      },
+      "getFrequentPoIRequest": {
+        "title": "getFrequentPoIRequest",
+        "required": [
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "Front End UserID"
+          }
+        },
+        "example": {
+          "userId": "Majd"
+        }
+      },
+      "getPathToPoIRequest": {
+        "title": "getPathToPoIRequest",
+        "required": [
+          "x1",
+          "y1",
+          "EdgeID",
+          "sFloorID",
+          "destPoIId",
+          "UserID",
+          "HandicapUser"
+        ],
+        "type": "object",
+        "properties": {
+          "x1": {
+            "type": "string",
+            "description": "Source Point X"
+          },
+          "y1": {
+            "type": "string",
+            "description": "Source Point Y"
+          },
+          "EdgeID": {
+            "type": "string",
+            "description": "Source Point Edge ID"
+          },
+          "sFloorID": {
+            "type": "string",
+            "description": "Source Floor ID"
+          },
+          "destPoIId": {
+            "type": "string",
+            "description": "Destination PoI ID"
+          },
+          "UserID": {
+            "type": "string",
+            "description": "Front End User ID"
+          },
+          "HandicapUser": {
+            "type": "string",
+            "description": "User Handicap flag"
+          }
+        },
+        "example": {
+          "x1": "2093",
+          "y1": "1022",
+          "EdgeID": "17",
+          "sFloorID": "1",
+          "destPoIId": "3",
+          "UserID": "Majd",
+          "HandicapUser": "false"
+        }
+      },
+      "GetShortestPathRequest": {
+        "title": "GetShortestPathRequest",
+        "required": [
+          "x1",
+          "y1",
+          "x2",
+          "y2",
+          "sFloorID",
+          "dFloorID",
+          "UserID",
+          "HandicapUser"
+        ],
+        "type": "object",
+        "properties": {
+          "x1": {
+            "type": "string",
+            "description": "Source Point X"
+          },
+          "y1": {
+            "type": "string",
+            "description": "Source Point Y"
+          },
+          "x2": {
+            "type": "string",
+            "description": "Destination Point X"
+          },
+          "y2": {
+            "type": "string",
+            "description": "Destination Point Y"
+          },
+          "sFloorID": {
+            "type": "string",
+            "description": "Source Floor ID"
+          },
+          "dFloorID": {
+            "type": "string",
+            "description": "Destination Floor ID"
+          },
+          "UserID": {
+            "type": "string",
+            "description": "Front End User ID"
+          },
+          "HandicapUser": {
+            "type": "string",
+            "description": "User Handicap flag"
+          },
+          "Edge1ID": {
+            "type": "string",
+            "description": "Source Point Edge ID"
+          },
+          "Edge2ID": {
+            "type": "string",
+            "description": "Destination Point Edge ID"
+          }
+        },
+        "example": {
+          "x1": "2093",
+          "y1": "1022",
+          "x2": "2745",
+          "y2": "2093",
+          "sFloorID": "1",
+          "dFloorID": "1",
+          "UserID": "Majd",
+          "HandicapUser": "false"
+        }
+      },
+      "VenueSchema": {
+        "title": "VenueSchema",
+        "required": [
+          "ID",
+          "Name",
+          "ArabicName",
+          "isBLE",
+          "isWiFi",
+          "isMix",
+          "UpdateStatus",
+          "Name_SecondLang",
+          "Point",
+          "isDefault"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "description": "Venue ID"
+          },
+          "Name": {
+            "type": "string",
+            "description": "Venue Default Name"
+          },
+          "ArabicName": {
+            "type": "string",
+            "description": "Name  Venue Arabic Name"
+          },
+          "isBLE": {
+            "type": "boolean",
+            "description": "RF implemented Just BLE"
+          },
+          "isWiFi": {
+            "type": "boolean",
+            "description": "RF implemented Just Wi-Fi"
+          },
+          "isMix": {
+            "type": "boolean",
+            "description": "RF implemented BLE & Wi-Fi"
+          },
+          "UpdateStatus": {
+            "type": "integer",
+            "description": "Status (1-New,2-Deleted,3-Modified)"
+          },
+          "Points": {
+            "type": "string",
+            "description": "Venue Polygon Points Area on the map. <br>Separated by ‘#’ Ex: 4372,395#4809,395#4809,1121#4372,1121\n"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "description": "Is the default venue of the campus"
+          }
+        },
+        "example": {
+          "ArabicName": "",
+          "ID": 1,
+          "Name": "PenguinIN",
+          "Name_SecondLang": "بينجون",
+          "UpdateStatus": 3,
+          "isBLE": 1,
+          "isMix": 0,
+          "isWiFi": 0,
+          "Points": "35.86439521883032,31.977232012351458#35.86835415918628,31.977131903196003#35.868831592372835,31.974779306607136#35.863638835916774,31.974970428890042",
+          "isDefault": true
+        }
+      },
+      "MapSchema": {
+        "title": "MapSchema",
+        "required": [
+          "ID",
+          "VenueID",
+          "IconID",
+          "Name",
+          "Description",
+          "Level",
+          "Name_SecondLang",
+          "Description_SecondLang",
+          "ScaleFactor",
+          "MapUrl",
+          "UpdateStatus",
+          "isDefault",
+          "alignmentCenter",
+          "alignmentOrigin",
+          "alignmentScale",
+          "alignmentRotation"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "description": "Floor ID"
+          },
+          "VenueID": {
+            "type": "string",
+            "description": "Floor Venue ID"
+          },
+          "IconID": {
+            "type": "integer",
+            "description": "Floor assigned Icon ID"
+          },
+          "Name": {
+            "type": "string",
+            "description": "Floor Default Name"
+          },
+          "Description": {
+            "type": "string",
+            "description": "Floor Description"
+          },
+          "Level": {
+            "type": "string",
+            "description": "Floor Order Level “Vertically”"
+          },
+          "Name_SecondLang": {
+            "type": "string",
+            "description": "Floor Default Name with second language"
+          },
+          "Description_SecondLang": {
+            "type": "string",
+            "description": "Floor Description with second language"
+          },
+          "ScaleFactor": {
+            "type": "string",
+            "description": "Floor Map Image Scale Factor (content is float)"
+          },
+          "MapUrl": {
+            "type": "string",
+            "description": "Floor Map Image Direct Download URL."
+          },
+          "UpdateStatus": {
+            "type": "string",
+            "description": "Status as integer (1-New,2-Deleted,3-Modified)"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "description": "Is the default floor of campus flag"
+          },
+          "alignmentCenter": {
+            "type": "string",
+            "description": "outdoor map alignment center point"
+          },
+          "alignmentOrigin": {
+            "type": "string",
+            "description": "outdoor map alignment origin point"
+          },
+          "alignmentScale": {
+            "type": "number",
+            "description": "outdoor map alignment scale value"
+          },
+          "alignmentRotation": {
+            "type": "number",
+            "description": "outdoor map alignment rotation value"
+          }
+        },
+        "example": {
+          "Desc_SecondLang": " أر سي اتش",
+          "Description": "RCH - OPD",
+          "ID": "1",
+          "IconID": 0,
+          "Level": "0",
+          "MapUrl": "http://PenguinINServer/PenguinBEPenguinIN/Content/maps/Section1.1_Riot.jpg",
+          "Name": "OPD Ground Floor",
+          "Name_SecondLang": "الطابق الارضي",
+          "ScaleFactor": "0.0259214816084293",
+          "UpdateStatus": "3",
+          "VenueID": "1",
+          "isDefault": true,
+          "alignmentCenter": "213,1231",
+          "alignmentOrigin": "123,123",
+          "alignmentScale": 0.01,
+          "alignmentRotation": 0.5
+        }
+      },
+      "FloorIconSchema": {
+        "title": "FloorIconSchema",
+        "required": [
+          "ID",
+          "Description",
+          "Image",
+          "UpdateStatus"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "description": "Floor Icon ID"
+          },
+          "Description": {
+            "type": "string",
+            "description": "Description"
+          },
+          "Image": {
+            "type": "string",
+            "description": "Floor Icon Image"
+          },
+          "UpdateStatus": {
+            "type": "integer",
+            "description": "Status (1-New,2-Deleted,3-Modified)"
+          }
+        },
+        "example": {
+          "Description": "Ground",
+          "ID": 0,
+          "UpdateStatus": 1,
+          "image": "/9j/4AAQSkZJRgABAgAAAQABAAD/4QDmRX"
+        }
+      },
+      "UuidResultSchema": {
+        "title": "UuidResultSchema",
+        "required": [
+          "ID",
+          "UUIDData",
+          "UpdateStatus"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "description": "Identifier of the UUID"
+          },
+          "UUIDData": {
+            "type": "string",
+            "description": "Uuid Value"
+          },
+          "UpdateStatus": {
+            "type": "integer",
+            "description": "Status (1-New,2-Deleted,3-Modified)"
+          }
+        },
+        "example": {
+          "ID": 1,
+          "UUIDData": "A2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
+          "UpdateStatus": 1
+        }
+      },
+      "EdgeSchema": {
+        "title": "EdgeSchema",
+        "required": [
+          "ID",
+          "FloorID",
+          "Type",
+          "X1",
+          "Y1",
+          "X2",
+          "Y2",
+          "UpdateStatus",
+          "CampusID",
+          "VenueID",
+          "Outdoor",
+          "P1VenueID",
+          "P1FloorID",
+          "P1TypeID",
+          "Longitude1",
+          "Latitude1",
+          "P2VenueID",
+          "P2FloorID",
+          "P2TypeID",
+          "Longitude2",
+          "Latitude2",
+          "Connectedtheta",
+          "Connecteddirection"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "description": "Edge ID"
+          },
+          "FloorID": {
+            "type": "string",
+            "description": "Edge Floor ID"
+          },
+          "Type": {
+            "type": "string",
+            "description": "Edge Type: •  0,1 Normal •  2   Elevator •  3   Escalator •  5   Venue Change or Gateway\n"
+          },
+          "X1": {
+            "type": "string",
+            "description": "Edge First Point X1"
+          },
+          "Y1": {
+            "type": "string",
+            "description": "Edge First Point Y1"
+          },
+          "X2": {
+            "type": "string",
+            "description": "Edge Second Point X2"
+          },
+          "Y2": {
+            "type": "string",
+            "description": "Edge Second Point Y2"
+          },
+          "UpdateStatus": {
+            "type": "string",
+            "description": "Status as integer (1-New,2-Deleted,3-Modified)"
+          },
+          "CampusID": {
+            "type": "integer",
+            "description": "Edge’s Campus ID"
+          },
+          "VenueID": {
+            "type": "integer",
+            "description": "Edge’s Venue ID"
+          },
+          "Outdoor": {
+            "type": "boolean",
+            "description": "Edge is on outdoor (or indoor map)"
+          },
+          "P1VenueID": {
+            "type": "integer",
+            "description": "Edge’s first point Venue ID"
+          },
+          "P1FloorID": {
+            "type": "integer",
+            "description": "Edge’s first point Floor ID"
+          },
+          "P1TypeID": {
+            "type": "integer",
+            "description": "Edge’s first point Type ID: • 1  Normal (Indoor) • 2  Elevator (Indoor) • 3  Escalator (Indoor) • 4  Campus (Outdoor node) • 5  Gate (Indoor Venue Gate)\n"
+          },
+          "Longitude1": {
+            "type": "number",
+            "description": "Edge’s first point Longitude if Outdoor node type"
+          },
+          "Latitude1": {
+            "type": "number",
+            "description": "Edge’s first point Latitude if Outdoor node type"
+          },
+          "P2VenueID": {
+            "type": "integer",
+            "description": "Edge’s second point Venue ID"
+          },
+          "P2FloorID": {
+            "type": "integer",
+            "description": "Edge’s second point Floor ID"
+          },
+          "P2TypeID": {
+            "type": "integer",
+            "description": "Edge’s first point Type ID: • 1  Normal (Indoor) • 2  Elevator (Indoor) • 3  Escalator (Indoor) • 4  Campus (Outdoor node) • 5  Gate (Indoor Venue Gate)\n"
+          },
+          "Longitude2": {
+            "type": "integer",
+            "description": "Edge’s second point Longitude if Outdoor node type"
+          },
+          "Latitude2": {
+            "type": "integer",
+            "description": "Edge’s second point Latitude if Outdoor node type"
+          },
+          "Connectedtheta": {
+            "type": "number"
+          },
+          "Connecteddirection": {
+            "type": "integer"
+          }
+        },
+        "example": {
+          "FloorID": "136",
+          "ID": "3884",
+          "Type": "0",
+          "UpdateStatus": "1",
+          "X1": "401",
+          "X2": "387",
+          "Y1": "387",
+          "Y2": "373",
+          "CampusID": 1,
+          "VenueID": 1,
+          "Outdoor": false,
+          "P1VenueID": 1,
+          "P1FloorID": 1,
+          "P1TypeID": 1,
+          "Longitude1": 0.0,
+          "Latitude1": 0.0,
+          "P2VenueID": 1,
+          "P2FloorID": 1,
+          "P2TypeID": 1,
+          "Longitude2": 0.0,
+          "Latitude2": 0.0,
+          "Connectedtheta": 0.0,
+          "Connecteddirection": 0
+        }
+      },
+      "PoiCategorySchema": {
+        "title": "PoiCategorySchema",
+        "required": [
+          "ID",
+          "Name",
+          "Image",
+          "UpdateStatus",
+          "Name_SecondLang",
+          "Description_SecondLang"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "description": "Category ID (content is integer)"
+          },
+          "Name": {
+            "type": "string",
+            "description": "Category Default Name"
+          },
+          "Image": {
+            "type": "string",
+            "description": "Category Image"
+          },
+          "UpdateStatus": {
+            "type": "string",
+            "description": "Status as integer (1-New,2-Deleted,3-Modified)"
+          },
+          "Name_SecondLang": {
+            "type": "string",
+            "description": "Subcategory Name in second language"
+          },
+          "Description_SecondLang": {
+            "type": "string",
+            "description": "Category Description in second language"
+          }
+        },
+        "example": {
+          "Description_SecondLang": "",
+          "ID": "3",
+          "Image": "/A1PKRNXWdIu0AAAAAElFTkSuQmCC",
+          "Name": "Facilities",
+          "Name_SecondLang": "",
+          "UpdateStatus": "3"
+        }
+      },
+      "PoiSubCategorySchema": {
+        "title": "PoiSubCategorySchema",
+        "required": [
+          "ID",
+          "CatID",
+          "Name",
+          "Image",
+          "UpdateStatus",
+          "Name_SecondLang",
+          "Description_SecondLang"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "description": "Sub Category ID as integer"
+          },
+          "CatID": {
+            "type": "string",
+            "description": "Master Category ID as integer"
+          },
+          "Name": {
+            "type": "string",
+            "description": "Sub Category Default Name"
+          },
+          "Image": {
+            "type": "string",
+            "description": "Sub Category Image"
+          },
+          "UpdateStatus": {
+            "type": "string",
+            "description": "Status as integer (1-New,2-Deleted,3-Modified)"
+          },
+          "Name_SecondLang": {
+            "type": "string",
+            "description": "Subcategory Name in second language"
+          },
+          "Description_SecondLang": {
+            "type": "string",
+            "description": "Subcategory Description in second language"
+          }
+        },
+        "example": {
+          "CatID": "2",
+          "Description_SecondLang": "",
+          "ID": "19",
+          "Image": "/A9qz+ZLWBev5AAAAAElFTkSuQmCC",
+          "Name": "Manager ",
+          "Name_SecondLang": "",
+          "UpdateStatus": "3"
+        }
+      },
+      "PoiSchema": {
+        "title": "PoiSchema",
+        "required": [
+          "ID",
+          "FloorID",
+          "CatIDs",
+          "SubcatIDs",
+          "Name",
+          "Name_SecondLang",
+          "Description",
+          "Description_SecondLang",
+          "Image",
+          "Phone",
+          "Email",
+          "ZoneID",
+          "ZonePoints",
+          "WithSchedule",
+          "UpdateStatus",
+          "Type",
+          "LandMark"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "description": "PoI ID"
+          },
+          "FloorID": {
+            "type": "string",
+            "description": "PoI Floor ID"
+          },
+          "CatIDs": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "PoI Categories IDs"
+          },
+          "SubcatIDs": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "PoI Sub Categories IDs"
+          },
+          "Name": {
+            "type": "string",
+            "description": "PoI Default Name"
+          },
+          "Name_SecondLang": {
+            "type": "string",
+            "description": "POI Name with second language"
+          },
+          "Description": {
+            "type": "string",
+            "description": "PoI Description"
+          },
+          "Description_SecondLang": {
+            "type": "string",
+            "description": "PoI Description with second language"
+          },
+          "Image": {
+            "type": "string",
+            "description": "PoI Image"
+          },
+          "Phone": {
+            "type": "string",
+            "description": "PoI Contact Phone"
+          },
+          "Email": {
+            "type": "string",
+            "description": "PoI Contact Email"
+          },
+          "ZoneID": {
+            "type": "string",
+            "description": "PoI Polygon Zone ID"
+          },
+          "ZonePoints": {
+            "type": "string",
+            "description": "PoI Polygon Points Area on the map. <br>Separated by ‘#’ Ex: 4372,395#4809,395#4809,1121#4372,1121\n"
+          },
+          "WithSchedule": {
+            "type": "integer",
+            "description": "PoI Schedule existence flag"
+          },
+          "UpdateStatus": {
+            "type": "string",
+            "description": "Status as integer (1-New,2-Deleted,3-Modified)"
+          },
+          "Type": {
+            "type": "string",
+            "description": "PoI Type ID"
+          },
+          "LandMark": {
+            "type": "string",
+            "description": "Land Mark PoI flag"
+          }
+        },
+        "example": {
+          "CatIDs": [
+            1,
+            3,
+            5
+          ],
+          "Description": "Meeting Room",
+          "Description_SecondLang": "بينجون وصف",
+          "Email": "Meeting@PenguinIN.com",
+          "FloorID": "1",
+          "ID": "1",
+          "Image": "",
+          "Landmark": 1,
+          "Name": "Meeting Room",
+          "Name_SecondLang": "بينجون",
+          "Phone": "065543105",
+          "SubcatIDs": [
+            2,
+            6,
+            9
+          ],
+          "Type": "0",
+          "UpdateStatus": "3",
+          "WithSchedule": 0,
+          "ZoneID": "1",
+          "ZonePoints": "747,1126#1089,1126#1089,1474#747,1474"
+        }
+      },
+      "PoiScheduleSchema": {
+        "title": "PoiScheduleSchema",
+        "required": [
+          "ScheduleID",
+          "PoI_ID",
+          "DayNumber",
+          "OffDay",
+          "OpeningTime",
+          "ClosingTime",
+          "UpdateStatus"
+        ],
+        "type": "object",
+        "properties": {
+          "ScheduleID": {
+            "type": "integer",
+            "description": "Schedule ID"
+          },
+          "PoI_ID": {
+            "type": "integer",
+            "description": "Schedule assigned PoI ID"
+          },
+          "DayNumber": {
+            "type": "integer",
+            "description": "Schedule Week Day Number"
+          },
+          "OffDay": {
+            "type": "integer",
+            "description": "Off Day Flag"
+          },
+          "OpeningTime": {
+            "type": "string",
+            "description": "Open Time"
+          },
+          "ClosingTime": {
+            "type": "string",
+            "description": "Close Time"
+          },
+          "UpdateStatus": {
+            "type": "integer",
+            "description": "Status (1-New,2-Deleted,3-Modified)"
+          }
+        },
+        "example": {
+          "ClosingTime": "20:00:00.0000000",
+          "DayNumber": 0,
+          "OffDay": 1,
+          "OpeningTime": "11:00:00.0000000",
+          "PoI_ID": 576,
+          "ScheduleID": 1243,
+          "UpdateStatus": 3
+        }
+      },
+      "AdSchema": {
+        "title": "AdSchema",
+        "required": [
+          "ID",
+          "Name",
+          "Name_SecondLang",
+          "Icon",
+          "Image",
+          "Description",
+          "Description_SecondLang",
+          "PoIID",
+          "PoIName",
+          "POIName_SecondLang",
+          "Link",
+          "TermsAndConditions",
+          "FloorID",
+          "Active",
+          "AvaliableCoupon",
+          "VenueID",
+          "isDeleted"
+        ],
+        "type": "object",
+        "properties": {
+          "AdID": {
+            "type": "integer",
+            "description": "Advertisement ID"
+          },
+          "Name": {
+            "type": "string",
+            "description": "Ad Name"
+          },
+          "Name_SecondLang": {
+            "type": "string",
+            "description": "Ad Name with second language"
+          },
+          "Icon": {
+            "type": "string",
+            "description": "Ad Icon Image"
+          },
+          "Image": {
+            "type": "string",
+            "description": "Ad Main Image"
+          },
+          "Description": {
+            "type": "string",
+            "description": "Ad Description"
+          },
+          "Description_SecondLang": {
+            "type": "string",
+            "description": "Ad Description with second language"
+          },
+          "PoIID": {
+            "type": "integer",
+            "description": "Ad Assigned PoI ID “-1: No PoI Assigned”"
+          },
+          "PoIName": {
+            "type": "string",
+            "description": "Ad Assigned PoI Name"
+          },
+          "POIName_SecondLang": {
+            "type": "string",
+            "description": "Ad Assigned PoI Name with second language"
+          },
+          "Link": {
+            "type": "string",
+            "description": "Ad Url link"
+          },
+          "TermsAndConditions": {
+            "type": "string",
+            "description": "Ad Terms & Conditions"
+          },
+          "FloorID": {
+            "type": "integer",
+            "description": "Floor in which the Ad is located"
+          },
+          "Active": {
+            "type": "boolean",
+            "description": "Ad current status"
+          },
+          "AvaliableCoupon": {
+            "type": "boolean",
+            "description": "Ignore this field, not implemented feature"
+          },
+          "VenueID": {
+            "type": "integer",
+            "description": "Venue in which the Ad is located"
+          },
+          "isDeleted": {
+            "type": "boolean",
+            "description": "If this is true, ignore all the other fields"
+          }
+        },
+        "example": {
+          "Active": true,
+          "AdID": 366,
+          "AvaliableCoupon": false,
+          "Description": "full text edited",
+          "Description_SecondLang": "اعلان",
+          "FloorID": 129,
+          "Name": "short text",
+          "PoIID": 571,
+          "PoIName": "Rosticceria Modena",
+          "Name_SecondLang": "اعلان",
+          "POIName_SecondLang": "بينجون",
+          "TermsAndConditions": "",
+          "VenueID": 4,
+          "icon": "/9j/4AAQSkZJRgABAgAAAQABAAD/4QDmRX",
+          "image": "/9j/4AAQSkZJRgABAgAAAQABAAD/4QDmRX",
+          "isDeleted": false,
+          "link": "www.abus3ood.com"
+        }
+      },
+      "EdgeAdSchema": {
+        "title": "EdgeAdSchema",
+        "required": [
+          "ID",
+          "Name",
+          "Description_SecondLang",
+          "Icon",
+          "PoI_ID",
+          "Name_SecondLang",
+          "PoI_Name",
+          "POIName_SecondLang",
+          "StartDate",
+          "EndDate",
+          "isAllTime",
+          "Location"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "description": "Ad ID"
+          },
+          "Name": {
+            "type": "string",
+            "description": "Ad Name"
+          },
+          "Description_SecondLang": {
+            "type": "string",
+            "description": "Ad Description with second language"
+          },
+          "Icon": {
+            "type": "string",
+            "description": "Ad Icon image"
+          },
+          "PoI_ID": {
+            "type": "string",
+            "description": "Ad Assigned PoI ID “-1: No PoI Assigned”"
+          },
+          "Name_SecondLang": {
+            "type": "string",
+            "description": "Ad Name with second language"
+          },
+          "PoI_Name": {
+            "type": "string",
+            "description": "Ad Assigned PoI Name"
+          },
+          "POIName_SecondLang": {
+            "type": "string",
+            "description": "Ad Assigned PoI Name with second language"
+          },
+          "StartDate": {
+            "type": "string",
+            "description": "Ad start date"
+          },
+          "EndDate": {
+            "type": "string",
+            "description": "Ad end date"
+          },
+          "isAllTime": {
+            "type": "boolean",
+            "description": "Ad without time limitations"
+          },
+          "Location": {
+            "type": "string",
+            "description": "Ad location on the map (X,Y)"
+          }
+        },
+        "example": {
+          "Description_SecondLang": "تيست",
+          "EndDate": "/Date(1583007600000+0200)/",
+          "ID": 4,
+          "Icon": "iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAA",
+          "Location": "1558,799",
+          "Name": "hi",
+          "Name_SecondLang": "مرحبا",
+          "POIName_SecondLang": "بينجون",
+          "PoI_ID": "1",
+          "PoI_Name": "PT_female",
+          "StartDate": "/Date(1554009600000+0300)/",
+          "isAllTime": false
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Data API",
+      "description": "Api related methods"
+    },
+    {
+      "name": "Venue",
+      "description": "Everything about Venues"
+    },
+    {
+      "name": "Floor",
+      "description": "Everything about Floors"
+    },
+    {
+      "name": "Routes (Edges)",
+      "description": "Everything about Routes (Edges)"
+    },
+    {
+      "name": "PoI",
+      "description": "Everything about Points of Interest"
+    },
+    {
+      "name": "Ads",
+      "description": "Everything about Advertisements"
+    },
+    {
+      "name": "Path",
+      "description": "Navigation Shortest Path or Route Methods"
+    }
+  ]
+}
